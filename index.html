@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExamSphere | Working Quiz System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">E</span> ExamSphere</div>
+  <nav>
+    <button onclick="showPage('dashboard')">Dashboard</button>
+    <button onclick="showPage('quiz')">Take Quiz</button>
+    <button onclick="showPage('result')">Results</button>
+    <button onclick="showPage('analysis')">Analysis</button>
+  </nav>
+</header>
+
+<main>
+<section id="dashboard" class="page active">
+  <div class="hero">
+    <div>
+      <span class="label">JAVA PROJECT 3</span>
+      <h1>Adaptive Quiz &<br><span>Exam Engine</span></h1>
+      <p>A working demonstration of your 10-module Java project. Register a student, take an adaptive quiz, receive a result, and analyze performance.</p>
+      <button class="primary" onclick="startRegistration()">Start Quiz</button>
+    </div>
+    <div class="dashboard-card">
+      <div class="big-icon">E</div>
+      <h2>Smart Assessment</h2>
+      <p>Student → Quiz → Adaptive Engine → Result → Analysis</p>
+      <div class="quick"><b>10</b><small>Modules</small><b>5</b><small>Questions</small><b>100</b><small>Max Marks</small></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="label">PROJECT MODULES</span>
+    <h2>10-module architecture</h2>
+    <div class="modules">
+      <div>01 <b>Student</b><small>Student management</small></div>
+      <div>02 <b>Question Bank</b><small>Question storage</small></div>
+      <div>03 <b>Quiz & Examination</b><small>Exam process</small></div>
+      <div>04 <b>Adaptive Engine</b><small>Difficulty adjustment</small></div>
+      <div>05 <b>Result</b><small>Score calculation</small></div>
+      <div>06 <b>ValidateService</b><small>Input validation</small></div>
+      <div>07 <b>SearchService</b><small>Record searching</small></div>
+      <div>08 <b>ReportGenerationService</b><small>Report generation</small></div>
+      <div>09 <b>AnalysisService</b><small>Performance analysis</small></div>
+      <div>10 <b>Main</b><small>System integration</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="registration" class="page">
+  <div class="form-card">
+    <span class="label">STUDENT MODULE</span>
+    <h2>Student Registration</h2>
+    <p>Enter student details to begin the examination.</p>
+    <label>Student Name</label>
+    <input id="studentName" placeholder="e.g. Harsha">
+    <label>Student ID</label>
+    <input id="studentId" placeholder="e.g. STU101">
+    <label>Department</label>
+    <select id="department"><option>CSE</option><option>ECE</option><option>EEE</option><option>IT</option></select>
+    <button class="primary full" onclick="registerStudent()">Continue to Quiz</button>
+    <p id="regError" class="error"></p>
+  </div>
+</section>
+
+<section id="quiz" class="page">
+  <div class="quiz-top">
+    <div><span class="label">QUIZ & EXAMINATION</span><h2 id="quizTitle">Java Fundamentals</h2></div>
+    <div class="student-chip" id="studentChip"></div>
+  </div>
+  <div class="progress"><div id="progressBar"></div></div>
+  <div class="question-card">
+    <div class="question-meta"><span id="questionNo"></span><span id="difficulty"></span></div>
+    <h2 id="questionText"></h2>
+    <div id="options"></div>
+    <div class="quiz-actions">
+      <button class="secondary" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+    </div>
+    <p id="quizError" class="error"></p>
+  </div>
+</section>
+
+<section id="result" class="page">
+  <div class="result-card">
+    <span class="label">RESULT MODULE</span>
+    <h1 id="resultTitle">Quiz Completed</h1>
+    <div class="score-circle"><strong id="score">0</strong><small>/ 100</small></div>
+    <h2 id="resultClass"></h2>
+    <p id="resultMessage"></p>
+    <div class="result-grid">
+      <div><b id="correctCount">0</b><small>Correct</small></div>
+      <div><b id="wrongCount">0</b><small>Wrong</small></div>
+      <div><b id="answeredCount">0</b><small>Answered</small></div>
+    </div>
+    <button class="primary" onclick="showPage('analysis')">View Performance Analysis</button>
+  </div>
+</section>
+
+<section id="analysis" class="page">
+  <div class="section">
+    <span class="label">ANALYSISSERVICE</span>
+    <h2>Performance Analysis</h2>
+    <p class="muted">This represents the analysis performed using Java Collections and Stream API in your project.</p>
+    <div class="analysis-grid">
+      <div class="analysis-card"><small>Student</small><b id="aName">—</b></div>
+      <div class="analysis-card"><small>Average Score</small><b id="aScore">—</b></div>
+      <div class="analysis-card"><small>Performance</small><b id="aClass">—</b></div>
+      <div class="analysis-card"><small>Difficulty Reached</small><b id="aDifficulty">—</b></div>
+    </div>
+    <div class="bar-card">
+      <h3>Performance Summary</h3>
+      <div class="bar-row"><span>Score</span><div class="bar"><i id="scoreBar"></i></div><b id="barValue">0%</b></div>
+      <p id="analysisText"></p>
+    </div>
+    <button class="primary" onclick="showPage('dashboard')">Back to Dashboard</button>
+  </div>
+</section>
+</main>
+
+<footer>ExamSphere • Adaptive Quiz & Exam Engine • Java Project 3</footer>
+<script src="script.js"></script>
+</body>
+</html>
